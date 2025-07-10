@@ -1,9 +1,12 @@
+// Create Express app
 const express = require("express");
 const app = express();
 
+// Permit CORS
 const cors = require("cors");
 app.use(cors());
 
+// Initialise route for empty input
 app.get("/api", (req, res) => {
 
     // Create date object with current date
@@ -13,6 +16,7 @@ app.get("/api", (req, res) => {
     return res.status(200).json({ "unix": date.valueOf(), "utc": date.toUTCString() });
 });
 
+// Initalise route non-empty input
 app.get("/api/:date", (req, res) => {
 
     // Create date variable
@@ -34,6 +38,7 @@ app.get("/api/:date", (req, res) => {
     return res.status(200).json({ "unix": date.valueOf(), "utc": date.toUTCString() });
 });
 
+// Activate app
 app.listen(3000, () => {
     console.log("Process listening on port 3000!");
 });
